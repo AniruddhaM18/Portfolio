@@ -9,6 +9,7 @@ import ContactSection from "@/components/section/contact-section";
 import OverviewSection from "@/components/section/overview-section";
 import ProjectsSection from "@/components/section/projects-section";
 import GitHubContributionsSection from "@/components/section/github-contributions-section";
+import WorkSection from "@/components/section/work-section";
 import { PronounceMyName } from "@/components/pronounce-my-name";
 import { ArrowUpRight } from "lucide-react";
 
@@ -70,6 +71,26 @@ export default function Page() {
         </div>
       </section> */}
       <OverviewSection />
+      {DATA.work.length > 0 ? (
+        <section id="experience">
+          <div className="flex min-h-0 flex-col gap-y-6">
+            <BlurFade delay={BLUR_FADE_DELAY * 8}>
+              <div className="flex items-center w-full">
+                <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
+                <div className="border bg-primary z-10 rounded-none px-4 py-1">
+                  <span className="text-background text-sm font-medium">
+                    Experience
+                  </span>
+                </div>
+                <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
+              </div>
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 8 + 0.04}>
+              <WorkSection />
+            </BlurFade>
+          </div>
+        </section>
+      ) : null}
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>

@@ -7,8 +7,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DATA } from "@/data/resume";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { DATA, type WorkItem } from "@/data/resume";
+import { ChevronDown, ChevronRight, Laptop } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
@@ -16,7 +16,12 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 
   if (!src || imageError) {
     return (
-      <div className="size-8 md:size-10 p-1 border rounded-none shadow ring-2 ring-border bg-muted flex-none" />
+      <div
+        className="size-8 md:size-10 p-1 border rounded-none shadow ring-2 ring-border bg-muted flex-none flex items-center justify-center"
+        aria-hidden
+      >
+        <Laptop className="size-4 md:size-5 text-muted-foreground shrink-0" />
+      </div>
     );
   }
 
@@ -33,10 +38,12 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 export default function WorkSection() {
   return (
     <Accordion type="single" collapsible className="w-full grid gap-6">
-      {DATA.work.map((work) => (
+      {DATA.work.map((work: WorkItem) => {
+        const itemId = `${work.company}-${work.start}`;
+        return (
         <AccordionItem
-          key={work.company}
-          value={work.company}
+          key={itemId}
+          value={itemId}
           className="w-full border-b-0 grid gap-2"
         >
           <AccordionTrigger className="hover:no-underline p-0 cursor-pointer transition-colors rounded-none group [&>svg]:hidden">
@@ -77,10 +84,19 @@ export default function WorkSection() {
             </div>
           </AccordionTrigger>
           <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
-            {work.description}
+            {work.highlights && work.highlights.length > 0 ? (
+              <ul className="list-disc space-y-1 pl-4">
+                {work.highlights.map((line, i) => (
+                  <li key={`${itemId}-${i}`}>{line}</li>
+                ))}
+              </ul>
+            ) : (
+              work.description
+            )}
           </AccordionContent>
         </AccordionItem>
-      ))}
+        );
+      })}
     </Accordion>
   );
 }

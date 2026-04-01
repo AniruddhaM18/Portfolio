@@ -8,13 +8,14 @@ import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Docker } from "@/components/ui/svgs/docker";
 import type { ReactNode } from "react";
 
-type WorkItem = {
+export type WorkItem = {
   company: string;
   title: string;
   logoUrl: string;
   start: string;
   end?: string;
-  description: string;
+  description?: string;
+  highlights?: string[];
 };
 
 type HackathonLink = {
@@ -70,7 +71,7 @@ export const DATA = {
     timeZone: "Asia/Kolkata",
     pronouns: "he/him",
     urls: [
-      "https://axni.in",
+      "https://adorablee.fun",
       "https://aniruddha.xyz",
     ],
   },
@@ -110,7 +111,31 @@ export const DATA = {
     },
   },
 
-  work: [] as WorkItem[],
+  work: [
+    {
+      company: "Appx-YC21",
+      title:
+        "Contract · Led development of internal AI product, scaling it from v0 to v1.",
+      logoUrl: "",
+      start: "Feb 2026",
+      end: "Mar 2026",
+      highlights: [
+        "Built AI chat, image/video generation, voice mode, and agent-memory.",
+        "Implemented conversation sharing and persistent sessions similar to ChatGPT.",
+      ],
+    },
+    {
+      company: "Freelance",
+      title:
+        "Full-Stack Developer — Delivered end-to-end MERN applications with scalable frontend and backend systems.",
+      logoUrl: "",
+      start: "Mar 2025",
+      end: "Jan 2026",
+      highlights: [
+        "Built production APIs, optimized databases, and shipped client-ready features.",
+      ],
+    },
+  ] satisfies WorkItem[],
   education: [
     {
       school: "Bachelor of Business Administration in Computer Applications (BBA.CA)",
@@ -134,8 +159,8 @@ export const DATA = {
   projects: [
     {
       title: "Adorable (AI-Powered App Builder)",
-      href: "#",
-      repoUrl: "https://github.com/AniruddhaM18/Adorable/",
+      href: "https://www.adorablee.fun/",
+      repoUrl: "https://github.com/AniruddhaM18/Adorablee",
       dates: "",
       active: true,
       description:
@@ -152,7 +177,7 @@ export const DATA = {
       links: [
         {
           type: "Link",
-          href: "#",
+          href: "https://www.adorablee.fun/",
           icon: <Icons.globe className="size-3" />,
         },
       ],
