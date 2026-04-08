@@ -182,7 +182,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "https://youtu.be/OmZr9J6-R6A",
+      video: "https://www.youtube.com/watch?v=viGti2NExD0",
     },
     {
       title: "Antiquity (Live Quiz & Contest Platform)",
